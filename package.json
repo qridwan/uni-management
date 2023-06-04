@@ -5,13 +5,11 @@
   "main": "src/server.ts",
   "scripts": {
     "start": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsc --watch",
-    "lint": "eslint --ext .js,.ts .",
     "lint:check": "eslint --ignore-path .eslintignore --ext .ts,.js .",
     "lint:fix": "eslint --fix",
     "lint-prettier": "yarn lint:check && yarn prettier:check",
-    "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
+    "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ridwan",
   "license": "ISC",
