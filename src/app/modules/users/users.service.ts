@@ -1,10 +1,13 @@
 import config from '../../../config'
+import ApiError from '../../../errors/ApiError'
+import { logger } from '../../../shared/logger'
 import { IUser } from './users.interface'
 import { User } from './users.model'
 import { generateUserId } from './users.utils'
 
 const createUser = async (user: IUser): Promise<IUser | null> => {
   const createuser = await User.create(user)
+  logger.info('createuser: ', createuser)
   //auto generate increamental id
   const id = await generateUserId()
   user.id = id
@@ -14,7 +17,7 @@ const createUser = async (user: IUser): Promise<IUser | null> => {
   }
 
   if (!createuser) {
-    throw new Error('Could not create user')
+    throw new ApiError(400, 'Failed to create user')
   }
   return createuser
 }
